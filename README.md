@@ -1,4 +1,4 @@
-# Chris Dotfiles — CachyOS + Hyprland + Caelestia
+# superconfig — CachyOS + Hyprland + Caelestia
 
 Capa de personalización sobre una instalación **Caelestia / Midnight** ya
 funcionando. No es un fork del shell: instala solo los archivos que cambian la
@@ -40,8 +40,8 @@ Lista orientativa en [`packages.txt`](packages.txt).
 ## Instalación rápida
 
 ```bash
-git clone <URL-DE-TU-REPO> ~/chris-dotfiles
-cd ~/chris-dotfiles
+git clone https://github.com/crdacoga2016-beep/superconfig.git ~/superconfig
+cd ~/superconfig
 
 # 1) Ver qué haría, sin tocar nada
 ./install.sh --dry-run
