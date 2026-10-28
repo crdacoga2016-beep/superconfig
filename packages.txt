@@ -1,0 +1,37 @@
+# Base (Caelestia / Midnight; instala el shell como en el escritorio)
+midnight-cli-git
+quickshell-git
+hyprland
+
+# Necesarios para el payload
+python
+tar
+xz
+kitty
+fish
+thunar
+hyprswitch
+bubblewrap
+jq
+wl-clipboard
+libnotify
+ffmpeg
+
+# Recomendados para la experiencia completa
+cliphist
+papirus-icon-theme
+breeze-icons
+ttf-jetbrains-mono-nerd
+gnome-text-editor
+qtengine
+starship
+fastfetch
+eza
+zoxide
+direnv
+
+# Instalación sugerida en CachyOS/Arch (revisa antes de ejecutar):
+# paru -S --needed midnight-cli-git quickshell-git hyprland python tar xz \
+#   kitty fish thunar hyprswitch bubblewrap jq wl-clipboard libnotify ffmpeg \
+#   cliphist papirus-icon-theme breeze-icons ttf-jetbrains-mono-nerd gnome-text-editor qtengine \
+#   starship fastfetch eza zoxide direnv

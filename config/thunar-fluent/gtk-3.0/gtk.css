@@ -1,0 +1,29 @@
+/* Thunar Fluent Windows 11: superficies limpias para blur de Hyprland */
+
+.thunar headerbar,
+.thunar .titlebar,
+.thunar toolbar {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+}
+
+.thunar .sidebar,
+.thunar .sidebar .view {
+    background-color: transparent;
+}
+
+.thunar .frame.standard-view {
+    border-radius: 8px;
+}
+
+.thunar .path-bar button,
+.thunar .location-button {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.thunar paned > separator {
+    background: none;
+    background-image: none;
+    box-shadow: none;
+}

@@ -1,0 +1,179 @@
+{
+    "appearance": {
+        "transparency": {
+            "base": 0.4,
+            "enabled": true,
+            "layers": 0.08475718320235759
+        }
+    },
+    "background": {
+        "desktopClock": {
+            "background": {
+                "blur": true,
+                "enabled": false,
+                "opacity": 0.7
+            },
+            "enabled": true,
+            "invertColors": false,
+            "position": "top-right",
+            "scale": 1,
+            "shadow": {
+                "blur": 0.4,
+                "enabled": true,
+                "opacity": 0.7
+            }
+        },
+        "enabled": true,
+        "videoWallpaperPaused": false,
+        "visualiser": {
+            "autoHide": true,
+            "blur": false,
+            "enabled": true,
+            "rounding": 1.4896703094302555,
+            "spacing": 2
+        },
+        "wallpaperEnabled": true,
+        "wallpaperRecolor": false
+    },
+    "bar": {
+        "clock": {
+            "background": false,
+            "showDate": false,
+            "showSeconds": false
+        },
+        "dock": {
+            "recolourIcons": false
+        },
+        "entries": {
+            "center": [
+                {
+                    "enabled": false,
+                    "id": "activeWindow"
+                },
+                {
+                    "enabled": true,
+                    "id": "dock"
+                }
+            ],
+            "start": [
+                {
+                    "enabled": true,
+                    "id": "logo"
+                },
+                {
+                    "enabled": true,
+                    "id": "workspaces"
+                }
+            ]
+        },
+        "position": "bottom",
+        "spotify": {
+            "background": false
+        },
+        "statusIcons": [
+            {
+                "enabled": true,
+                "id": "lockStatus"
+            },
+            {
+                "enabled": false,
+                "id": "microphone"
+            },
+            {
+                "enabled": false,
+                "id": "kbLayout"
+            },
+            {
+                "enabled": true,
+                "id": "network"
+            },
+            {
+                "enabled": true,
+                "id": "bluetooth"
+            },
+            {
+                "enabled": true,
+                "id": "audio"
+            },
+            {
+                "enabled": true,
+                "id": "battery"
+            },
+            {
+                "enabled": false,
+                "id": "peripheralBattery"
+            },
+            {
+                "enabled": true,
+                "id": "notifications"
+            }
+        ]
+    },
+    "general": {
+        "apps": {
+            "explorer": [
+                "thunar"
+            ]
+        },
+        "sessionGifSpeed": 1
+    },
+    "paths": {
+        "sessionGif": "${HOME}/.local/share/caelestia/assets/fry.webp",
+        "wallpaperDir": "${WALLPAPER_DIR}"
+    },
+    "utilities": {
+        "quickToggles": [
+            {
+                "enabled": true,
+                "id": "wifi"
+            },
+            {
+                "enabled": true,
+                "id": "bluetooth"
+            },
+            {
+                "enabled": true,
+                "id": "quickshare"
+            },
+            {
+                "enabled": false,
+                "id": "mic"
+            },
+            {
+                "enabled": true,
+                "id": "settings"
+            },
+            {
+                "enabled": true,
+                "id": "gameMode"
+            },
+            {
+                "enabled": true,
+                "id": "dnd"
+            },
+            {
+                "enabled": false,
+                "id": "vpn"
+            },
+            {
+                "enabled": true,
+                "id": "wallpaper"
+            },
+            {
+                "enabled": true,
+                "id": "badapple"
+            },
+            {
+                "enabled": true,
+                "id": "pauseWallpaper"
+            },
+            {
+                "enabled": true,
+                "id": "pipPause"
+            }
+        ],
+        "toasts": {
+            "transparency": true
+        }
+    }
+}

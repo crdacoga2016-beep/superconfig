@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+mkdir -p "$HOME/.config/gtk-3.0"
+
+if ! command -v bwrap >/dev/null 2>&1 || ! bwrap --dev-bind / / true 2>/dev/null; then
+    exec /usr/bin/thunar "$@"
+fi
+
+exec bwrap --dev-bind / / \
+    --bind "$HOME/.config/thunar-fluent/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini" \
+    --bind "$HOME/.config/thunar-fluent/gtk-3.0/gtk.css" "$HOME/.config/gtk-3.0/gtk.css" \
+    --setenv GTK_THEME Fluent-Dark \
+    /usr/bin/thunar "$@"
