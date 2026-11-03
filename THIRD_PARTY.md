@@ -39,6 +39,8 @@ terceros. Los recursos conservan la licencia de sus proyectos originales.
 
 - `fry.webp`: GIF de Fry (Futurama) usado en el menú de sesión. Pertenece a sus
   respectivos titulares; se incluye como asset personal de la configuración.
-- `hyprswitch`: <https://github.com/hyprwm/hyprswitch> (paquete del sistema, no
-  se incluye el binario).
+- `hyprswitch`: fork <https://github.com/egnrse/hyprswitch> (MIT). No se
+  incluye el binario; `scripts/build-hyprswitch-patched.sh` lo compila con un
+  parche local para `hyprland-rs` 0.4.0-beta.3.
+- `hyprland-rs`: <https://github.com/hyprwm/hyprland-rs> (MIT).
 - Quickshell: <https://quickshell.org/>.

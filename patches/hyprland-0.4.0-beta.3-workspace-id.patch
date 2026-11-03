@@ -1,0 +1,10 @@
+--- a/src/data/regular.rs
++++ b/src/data/regular.rs
+@@ -39,6 +39,7 @@
+ #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
+ pub struct WorkspaceBasic {
+     /// The workspace Id
++    #[serde(default)]
+     pub id: WorkspaceId,
+     /// The workspace's name
+     pub name: String,

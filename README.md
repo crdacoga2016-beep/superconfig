@@ -30,6 +30,8 @@ Kitty, suspensión, etc.).
 - **Caelestia / Midnight** ya instalado y funcionando. En este equipo el CLI
   viene del paquete `midnight-cli-git` y el shell de `quickshell-git`.
 - `python3`, `tar`, `xz`.
+- En Hyprland 0.57+: `rust` y `gtk4-layer-shell` para compilar el hyprswitch
+  parcheado (ver más abajo).
 - Recomendados: `kitty`, `fish`, `thunar`, `hyprswitch`, `bubblewrap`, `jq`,
   `wl-clipboard`, `libnotify`, `ffmpeg`, `cliphist`, `papirus-icon-theme`,
   `breeze-icons`, `ttf-jetbrains-mono-nerd`, `gnome-text-editor`, `qtengine`,
@@ -49,6 +51,9 @@ cd ~/superconfig
 # 2) Instalar (hace backup de lo que reemplaza)
 ./install.sh
 
+# 2b) Hyprland 0.57+: compilar hyprswitch parcheado (requiere rust)
+./install.sh --install-packages --build-hyprswitch
+
 # 3) Aplicar
 hyprctl reload   # o cerrar y volver a iniciar sesión
 ```
@@ -58,6 +63,7 @@ Opciones útiles:
 ```bash
 ./install.sh --yes                         # sin confirmación
 ./install.sh --install-packages            # intenta instalar faltantes con paru/yay/pacman
+./install.sh --build-hyprswitch            # compila hyprswitch parcheado (Hyprland 0.57+)
 ./install.sh --wallpaper-dir ~/Vídeos      # carpeta de vídeos/fondos
 ./install.sh --no-integrations             # no toca systemctl/xdg-mime/hyprctl/hooks
 ./install.sh --help
@@ -134,7 +140,8 @@ scripts/                     merge seguro de JSON y generación del .desktop
 ## Qué no se incluye
 
 - `~/.config/caelestia/shell.json` con API keys.
-- El binario `~/.local/bin/hyprswitch` (se usa el paquete `hyprswitch`).
+- El binario `~/.local/bin/hyprswitch` (se compila con
+  `scripts/build-hyprswitch-patched.sh`; ver “No aparece hyprswitch”).
 - Archivos generados: `hypr/scheme/current.lua`, `hyprswitch/theme.css` y
   `quickshell/overview/theme.json` (se regeneran al iniciar o con
   `hyprswitch-theme`).
@@ -153,11 +160,18 @@ bwrap --dev-bind / / true && echo ok
 
 Si falla, el wrapper lanza Thunar normal como fallback.
 
-**No aparece hyprswitch**  
+**No aparece hyprswitch / `missing field 'id'`**  
+Hyprland 0.57 cambió `specialWorkspace` y el paquete `hyprswitch` 5.0.0 falla
+al parsear los monitores. Compila el fork parcheado (commit `3b5bb6a`):
 
 ```bash
-paru -S hyprswitch
+sudo pacman -S --needed rust
+./scripts/build-hyprswitch-patched.sh
 ```
+
+o directamente `./install.sh --install-packages --build-hyprswitch`. El
+parche está en `patches/hyprland-0.4.0-beta.3-workspace-id.patch` y hace
+opcional `WorkspaceBasic.id` en `hyprland-rs`.
 
 **Los colores del overview/hyprswitch no cambian**  
 

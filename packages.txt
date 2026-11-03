@@ -11,6 +11,8 @@ kitty
 fish
 thunar
 hyprswitch
+# rust: solo para compilar el hyprswitch parcheado (--build-hyprswitch)
+rust
 bubblewrap
 jq
 wl-clipboard
@@ -31,7 +33,9 @@ zoxide
 direnv
 
 # Instalación sugerida en CachyOS/Arch (revisa antes de ejecutar):
+# Hyprland 0.57+: el paquete hyprswitch está roto; compila el parche con
+# ./scripts/build-hyprswitch-patched.sh (requiere rust y gtk4-layer-shell).
 # paru -S --needed midnight-cli-git quickshell-git hyprland python tar xz \
-#   kitty fish thunar hyprswitch bubblewrap jq wl-clipboard libnotify ffmpeg \
+#   kitty fish thunar hyprswitch rust gtk4-layer-shell bubblewrap jq wl-clipboard libnotify ffmpeg \
 #   cliphist papirus-icon-theme breeze-icons ttf-jetbrains-mono-nerd gnome-text-editor qtengine \
 #   starship fastfetch eza zoxide direnv

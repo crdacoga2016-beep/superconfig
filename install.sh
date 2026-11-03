@@ -14,6 +14,7 @@ ASSUME_YES=0
 INSTALL_PACKAGES=0
 SKIP_DEPS=0
 NO_INTEGRATIONS=0
+BUILD_HYPRSWITCH=0
 WALLPAPER_DIR=""
 
 if [[ -t 1 ]]; then
@@ -38,6 +39,7 @@ Opciones:
   --install-packages     Intenta instalar dependencias con paru/yay/pacman.
   --no-deps              Omite la comprobación de dependencias.
   --no-integrations      No ejecuta systemctl, xdg-mime, hyprctl ni hooks.
+  --build-hyprswitch     Compila hyprswitch parcheado para Hyprland 0.57+ (requiere rust).
   -h, --help             Muestra esta ayuda.
 
 El instalador hace backups en:
@@ -221,6 +223,20 @@ check_dependencies() {
     if ((${#optional[@]})); then
         warn "faltan comandos para funciones: ${optional[*]}"
     fi
+
+    if ((BUILD_HYPRSWITCH)); then
+        local tool
+        for tool in git patch; do
+            command -v "$tool" >/dev/null 2>&1 || die "falta $tool para compilar hyprswitch"
+        done
+        if ! command -v cargo >/dev/null 2>&1; then
+            if ((INSTALL_PACKAGES)); then
+                pkg_install rust || die "no se pudo instalar rust"
+            else
+                die "falta cargo; instala rust (sudo pacman -S rust) o usa --install-packages"
+            fi
+        fi
+    fi
 }
 
 merge_shell_json() {
@@ -345,6 +361,18 @@ run_integrations() {
     fi
 }
 
+build_hyprswitch() {
+    if (( ! BUILD_HYPRSWITCH )); then
+        return 0
+    fi
+    info "hyprswitch parcheado para Hyprland 0.57+"
+    if ((DRY_RUN)); then
+        "$REPO_DIR/scripts/build-hyprswitch-patched.sh" --dry-run
+    else
+        "$REPO_DIR/scripts/build-hyprswitch-patched.sh"
+    fi
+}
+
 main() {
     while (($#)); do
         case "$1" in
@@ -353,6 +381,7 @@ main() {
             --install-packages) INSTALL_PACKAGES=1; shift ;;
             --no-deps) SKIP_DEPS=1; shift ;;
             --no-integrations) NO_INTEGRATIONS=1; shift ;;
+            --build-hyprswitch) BUILD_HYPRSWITCH=1; shift ;;
             --wallpaper-dir)
                 [[ $# -ge 2 ]] || die "--wallpaper-dir necesita una ruta"
                 WALLPAPER_DIR="$2"; shift 2 ;;
@@ -381,6 +410,7 @@ main() {
 
     install_payload
     run_integrations
+    build_hyprswitch
 
     if ((DRY_RUN)); then
         ok "Simulación completada"
